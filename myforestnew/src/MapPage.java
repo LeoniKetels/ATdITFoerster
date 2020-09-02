@@ -15,7 +15,7 @@ public class MapPage extends Container{
     public MapPage (JFrame parentFrame) {
     this.parentFrame = parentFrame;
     setLayout(new BorderLayout());
-    panel1 = new MapLabel();
+    //panel1 = new MapLabel();
     panelNavigation = new MenuBar(parentFrame);
    
      

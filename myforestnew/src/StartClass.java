@@ -1,6 +1,8 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  * This is the starting point of the MyForest Application
@@ -8,7 +10,17 @@ import javax.swing.JFrame;
  *
  */
 public class StartClass extends JFrame {
-	Container c;
+	Container c, content;
+	
+	public StartClass() {
+		c = this.getContentPane();
+		c.setLayout(new BorderLayout());
+		MenuBar navMenuBar = new MenuBar(this);
+		Container content = new HomeScreen(this);
+		c.add(navMenuBar, BorderLayout.NORTH);
+		c.add(content, BorderLayout.CENTER);
+		
+	}
 	public static void main(String[] args) {
 		JFrame start = new StartClass();
 		start.setContentPane(new HomeScreen(start));
@@ -17,5 +29,10 @@ public class StartClass extends JFrame {
 		start.setVisible(true);
 		start.setBackground(Color.white);
 		start.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void setContent(Container content) {
+		this.content = content; 
+		c.add(content, BorderLayout.CENTER);
 	}
 }

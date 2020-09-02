@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.net.URL;
 import javax.swing.*;
@@ -6,8 +5,8 @@ import javax.swing.*;
 public class MainMenu extends Container  {
 
 	public JTextField eingabeDateiFeld, ausgabeDateiFeld;
-	JPanel panelTitle,panelWeather,panelMap, panelNavigation;
-	JPanel scrollPanel;
+	JPanel panelTitle,panelWeather,panelMap, menuBar;
+	JPanel panelMiddle;
 	JLabel labelTitle,labelWeather,labelMap;
 	JFrame parentFrame;
 
@@ -17,7 +16,7 @@ public class MainMenu extends Container  {
 		setLayout(new BorderLayout());
         panelWeather 	= new JPanel();
         panelMap		= new JPanel();
-        panelNavigation = new MenuBar(parentFrame);
+        menuBar		 	= new MenuBar(parentFrame);
 
         URL weatherUrl 	= MainMenu.class.getResource("weatherImage.png");
         URL mapUrl 		= MainMenu.class.getResource("map.png");
@@ -27,7 +26,7 @@ public class MainMenu extends Container  {
         labelWeather 	= new JLabel(weather);
         labelMap 		= new JLabel(map);
         
-        JPanel panelMiddle= new JPanel(new GridLayout(2,1));
+        panelMiddle= new JPanel(new GridLayout(2,1));
         panelMiddle.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -41,17 +40,8 @@ public class MainMenu extends Container  {
         gbc.insets = new Insets(10, 0, 0, 0);
         panelMiddle.add(labelMap, gbc);
         
-        add(panelNavigation, BorderLayout.NORTH);
+        add(menuBar, BorderLayout.NORTH);
         add(panelMiddle, BorderLayout.CENTER);
         setVisible(true);
     }
 }
-
-
- 
-
-
- 
-
- 
-
