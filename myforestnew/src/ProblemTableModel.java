@@ -43,7 +43,7 @@ public class ProblemTableModel extends AbstractTableModel {
                     return dbConnection.getAreaById(area).getDescription();
                 case 3:
                 	int status = problem.getStatus_id();
-                    return dbConnection.getAreaById(status).getDescription();
+                    return dbConnection.getStatusById(status).getDescription();
                 case 4: 
                 	return problem.getTree();
             }

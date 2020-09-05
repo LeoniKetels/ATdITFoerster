@@ -10,6 +10,7 @@ public class ProblemPage extends Container{
 	JPanel menuBar, panelMiddle;
 	JTable table;
 	JScrollPane scrollpane;
+	JButton btnAdd;
 	
 	public ProblemPage(JFrame parentFrame) {
 		List<Problem> data = new ArrayList<Problem>();
@@ -20,22 +21,25 @@ public class ProblemPage extends Container{
 			e.printStackTrace();
 		}
 		
+		btnAdd = new JButton("+");
+		
 		table = new JTable();
 		ProblemTableModel tableModel = new ProblemTableModel(data);
 		table.setModel(tableModel);
+		table.setSize(200,200);
 		
 		scrollpane = new JScrollPane(table);
-		
+		panelMiddle = new JPanel();
+		panelMiddle.add(btnAdd);
+		panelMiddle.add(scrollpane);
 		this.parentFrame = parentFrame;
 		setLayout(new BorderLayout());
 		
         menuBar = new MenuBar(parentFrame);
         
         add(menuBar, BorderLayout.NORTH);
-        add(scrollpane, BorderLayout.CENTER);
+        add(panelMiddle, BorderLayout.CENTER);
         setVisible(true);
-
-		
 	}
 	
 }
