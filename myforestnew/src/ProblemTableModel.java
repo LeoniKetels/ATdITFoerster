@@ -49,6 +49,7 @@ public class ProblemTableModel extends AbstractTableModel {
             }
 
             }
+        dbConnection.close();
         }
 		catch( Exception e ) {
 			e.printStackTrace();

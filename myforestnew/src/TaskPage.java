@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.swing.*;
 
-public class ProblemPage extends Container{
+public class TaskPage extends Container{
 	
 	JFrame parentFrame;
 	JPanel menuBar, panelMiddle;
@@ -14,7 +14,7 @@ public class ProblemPage extends Container{
 	JScrollPane scrollpane;
 	JButton btnAdd;
 	
-	public ProblemPage(JFrame parentFrame) {
+	public TaskPage(JFrame parentFrame) {
 		List<Problem> data = new ArrayList<Problem>();
 		try {
 		DBConnection dbConnection = new DBConnection();
@@ -25,8 +25,6 @@ public class ProblemPage extends Container{
 			e.printStackTrace();
 		}
 		
-		btnAdd = new JButton("+");
-		btnAdd.addActionListener(new ButtonListener());
 		
 		table = new JTable();
 		ProblemTableModel tableModel = new ProblemTableModel(data);
@@ -47,17 +45,4 @@ public class ProblemPage extends Container{
         setVisible(true);
 	}
 	
-	class ButtonListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			ProblemForm fenster = new ProblemForm();
-	        fenster.setTitle("Problem");
-	        fenster.setSize(500, 300);
-	        fenster.setVisible(true);
-	        fenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			
-		}
-		
 	}
-}

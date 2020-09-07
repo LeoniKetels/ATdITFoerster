@@ -3,12 +3,7 @@ import java.awt.Container;
 import java.awt.GridLayout;
 
 import java.awt.event.ActionEvent;
-
-
- 
-
-
- 
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
@@ -25,18 +20,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
- 
-
-public class ProblemDetailPage extends JFrame  {
-
-
- 
+public class ProblemForm extends JFrame  {
 
     public JTextArea ProblemFeld;
 
     public JScrollPane sp;
 
-    public JTextArea Baummenu;
+    public JComboBox<String> Baummenu;
 
     public JTextArea Standortfeld;
 
@@ -45,13 +35,13 @@ public class ProblemDetailPage extends JFrame  {
     public JTextArea BildFeld;
 
     public JScrollPane sp3;
-
     
+    public JLabel problem, baumart, standort;
+    
+    public JFrame frame = this;
 
 
- 
-
-    public ProblemDetailPage() {
+    public ProblemForm() {
 
         Container c = getContentPane();
 
@@ -62,11 +52,11 @@ public class ProblemDetailPage extends JFrame  {
         {"Eiche", "Buche", "Tanne", "Ahorn", "Kastanie"};
  
 
-        JLabel Problem = new JLabel("Problembeschreibung:");
+        problem  = new JLabel("Problembeschreibung:");
 
-        JLabel Baumart = new JLabel("Baumart:");
+        baumart = new JLabel("Baumart:");
 
-        JLabel Standort = new JLabel("Standortkoordinaten:");
+        standort = new JLabel("Standortkoordinaten:");
 
         JLabel Bild = new JLabel("Bild:");
 
@@ -77,7 +67,7 @@ public class ProblemDetailPage extends JFrame  {
 
         sp = new JScrollPane(ProblemFeld);
 
-        JComboBox Baummenu = new JComboBox(namen);
+        Baummenu = new JComboBox<String>(namen);
 
         Standortfeld = new JTextArea();
 
@@ -89,42 +79,41 @@ public class ProblemDetailPage extends JFrame  {
  
 
         JButton knopf = new JButton("Hinzufügen");
-   
+        knopf.addActionListener(new ButtonListener());
 
-        c.add(Problem);
-
+        c.add(problem);
         c.add(sp);
-
-        c.add(Baumart);
-
+        c.add(baumart);
         c.add(Baummenu);
-
-        c.add(Standort);
-
+        c.add(standort);
         c.add(sp2);
-
         c.add(Bild);
-
         c.add(sp3);
-
         c.add(knopf);
     }
+    
+    class ButtonListener implements ActionListener{
 
-
- 
-
-    public static void main(String[] args) {
-
-        ProblemDetailPage fenster = new ProblemDetailPage();
-
-        fenster.setTitle("Problem");
-
-        fenster.setSize(500, 300);
-
-        fenster.setVisible(true);
-
-        fenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		@Override
+		public void actionPerformed(ActionEvent ae) {
+			try {
+				String description = ProblemFeld.getText();
+				String baum = (String) Baummenu.getSelectedItem();
+				
+				DBConnection dbConnection = new DBConnection();
+				dbConnection.insertProblem(new Problem(description,1, 1, baum ));
+				dbConnection.close();
+				
+				frame.dispose();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+    	
     }
+    
+    
+
 
 }

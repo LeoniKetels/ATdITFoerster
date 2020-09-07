@@ -6,8 +6,7 @@ public class Problem {
 	private int status_id;
 	private String tree; 
 	
-	public Problem(int id, String description, int area_id, int status_id, String tree) {
-		this.id = id;
+	public Problem(String description, int area_id, int status_id, String tree) {
 		this.description = description;
 		this.area_id = area_id;
 		this.status_id = status_id;
@@ -20,13 +19,9 @@ public class Problem {
 				.format("Problem [id=%s, description=%s, area_id=%s, status_id=%s, tree=%s]",
 						id, description, area_id, status_id, tree);
 	}
-
+	
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getDescription() {

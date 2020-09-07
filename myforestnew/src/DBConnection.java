@@ -117,6 +117,23 @@ public class DBConnection {
 			return null;
 		}
 	}
+	
+	public List<Problem> getProblemsInProgress(){
+		List<Problem> list = new ArrayList<Problem>();
+
+		try (Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM problem WHERE status_id= 3");
+
+			while (rs.next()) {
+				Problem problem = convertProblemRow(rs);
+				list.add(problem);
+			}
+			return list;
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			return null;
+		}
+	}
 
 	public Status getStatusById(int id) {
 		try (Statement stmt = conn.createStatement()) {
@@ -139,7 +156,7 @@ public class DBConnection {
 		int status_id = rs.getInt("status_id");
 		String tree = rs.getString("tree");
 
-		return new Problem(id, description, area_id, status_id, tree);
+		return new Problem(description, area_id, status_id, tree);
 	}
 
 	private Area convertAreaRow(ResultSet rs) throws SQLException {
@@ -198,14 +215,21 @@ public class DBConnection {
 		}
 	}
 
-
-	public static void main(String[] args) {
-
-		DBConnection dbConnection;
+	public void close() {
 		try {
-			dbConnection = new DBConnection();
-			System.out.println(dbConnection.getAllAreas());
-		} catch (Exception e) {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		try {
+			DBConnection dbConnection = new DBConnection();
+			List<Problem> data = dbConnection.getProblemsInProgress();
+			System.out.println(data.toString());
+			
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
