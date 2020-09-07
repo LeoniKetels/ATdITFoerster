@@ -22,7 +22,7 @@ public class MenuBar extends JPanel {
 	    shop.addActionListener(new navButtonListener( parentFrame, navButtonListener.SHOP_PAGE));
 	    chat.addActionListener(new navButtonListener( parentFrame, navButtonListener.CHAT_PAGE));
 	    problems.addActionListener(new navButtonListener( parentFrame, navButtonListener.PROBLEM_PAGE));
-	    tasks.addActionListener(new navButtonListener( parentFrame, navButtonListener.MAIN_MENU));
+	    tasks.addActionListener(new navButtonListener( parentFrame, navButtonListener.TASK_PAGE));
 	    
 	    tasks.setBackground(Color.WHITE);
 	    main.setBackground(Color.WHITE);

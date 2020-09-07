@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,29 +10,35 @@ public class TaskPage extends Container{
 	JPanel menuBar, panelMiddle;
 	JTable table;
 	JScrollPane scrollpane;
-	JButton btnAdd;
 	
 	public TaskPage(JFrame parentFrame) {
 		List<Problem> data = new ArrayList<Problem>();
 		try {
 		DBConnection dbConnection = new DBConnection();
-		data = dbConnection.getAllProblems();
+		data = dbConnection.getProblemsInProgress();
 		dbConnection.close();
 		
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
+		if (!data.isEmpty()) {
+			table = new JTable();
+			ProblemTableModel tableModel = new ProblemTableModel(data);
+			table.setModel(tableModel);
+			table.setSize(200,200);
+			
+			scrollpane = new JScrollPane(table);
+			panelMiddle = new JPanel();
+			panelMiddle.add(scrollpane);
+			
+	        
+		}else {
+        panelMiddle = new JPanel();
+		JLabel warnung = new JLabel("Keine Aufgaben in Bearbeitung");
+		panelMiddle.add(warnung);
+		}
 		
-		table = new JTable();
-		ProblemTableModel tableModel = new ProblemTableModel(data);
-		table.setModel(tableModel);
-		table.setSize(200,200);
-		
-		scrollpane = new JScrollPane(table);
-		panelMiddle = new JPanel();
-		panelMiddle.add(btnAdd);
-		panelMiddle.add(scrollpane);
 		this.parentFrame = parentFrame;
 		setLayout(new BorderLayout());
 		
