@@ -22,7 +22,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
+/**
+ * 
+ * @author Gruppe 1
+ * Container to display HomeScreen or loading page 
+ *
+ */
 public class HomeScreen extends Container {
 	JButton start;
 	JLabel lab;

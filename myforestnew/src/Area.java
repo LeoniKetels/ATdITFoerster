@@ -1,4 +1,8 @@
-
+/**
+ * @author Gruppe 1
+ * 
+ *Type to display Area from DB
+ */
 public class Area {
 	private int id;
 	private String description;

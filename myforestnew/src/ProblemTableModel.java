@@ -1,6 +1,12 @@
 import java.util.List;
-
 import javax.swing.table.AbstractTableModel;
+
+/**
+ * 
+ * @author Gruppe 1
+ * Table Model to display problems 
+ *
+ */
 
 public class ProblemTableModel extends AbstractTableModel {
 	List<Problem> problems;

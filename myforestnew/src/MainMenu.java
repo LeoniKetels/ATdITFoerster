@@ -2,6 +2,11 @@ import java.awt.*;
 import java.net.URL;
 import javax.swing.*;
 
+/**
+ * 
+ * @author Gruppe 1
+ * Container to display Main Menu with weather and map
+ */
 public class MainMenu extends Container  {
 
 	public JTextField eingabeDateiFeld, ausgabeDateiFeld;

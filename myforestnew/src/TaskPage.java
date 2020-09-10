@@ -1,9 +1,14 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.*;
 
+
+/**
+ * 
+ * @author Gruppe 1
+ * Container to display Tasks in a table
+ */
 public class TaskPage extends Container{
 	
 	JFrame parentFrame;

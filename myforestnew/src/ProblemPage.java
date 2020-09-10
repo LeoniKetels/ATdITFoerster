@@ -6,6 +6,12 @@ import java.util.List;
 
 import javax.swing.*;
 
+/**
+ * 
+ * @author Gruppe 1 
+ * Container to display Problems in a table 
+ *
+ */
 public class ProblemPage extends Container{
 	
 	JFrame parentFrame;

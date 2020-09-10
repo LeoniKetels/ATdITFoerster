@@ -1,4 +1,8 @@
-
+/**
+ * @author Gruppe 1
+ * 
+ *Type to display Status from DB
+ */
 public class Status {
 	private int id;
 	private String description;

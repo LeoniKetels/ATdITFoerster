@@ -1,4 +1,8 @@
-
+/**
+ * @author Gruppe 1
+ * 
+ *Type to display Problem from DB
+ */
 public class Problem {
 	private int id; 
 	private String description;

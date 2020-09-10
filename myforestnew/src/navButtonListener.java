@@ -30,10 +30,10 @@ public class navButtonListener implements ActionListener {
 			frame.setContentPane(new MainMenu(frame));
 			break;
 		case(CHAT_PAGE):
-			frame.setContentPane(new Chat(frame));
+			frame.setContentPane(new ChatPage(frame));
 			break;
 		case(SHOP_PAGE):
-			frame.setContentPane(new Shop(frame));
+			frame.setContentPane(new ShopPage(frame));
 			break;
 		case(PROBLEM_PAGE):
 			frame.setContentPane(new ProblemPage(frame));

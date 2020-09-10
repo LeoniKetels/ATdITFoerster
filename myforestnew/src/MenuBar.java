@@ -2,6 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 
+
+/**
+ * 
+ * @author Gruppe 1
+ * Menubar used for navigation between pages 
+ * 
+ *
+ */
 public class MenuBar extends JPanel {
 	JButton main, shop, chat, problems, tasks ;
 	

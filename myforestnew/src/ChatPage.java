@@ -1,21 +1,29 @@
 import java.awt.*;
 import java.net.URL;
-
-
 import javax.swing.*;
 
-public class Chat extends Container{
+/**
+ * @author Gruppe 1 
+ * 
+ * Container to display Chat
+ *
+ */
+
+//This is more or less a placeholder to show what we would have liked the application to be able to do 
+//but we decided not to implement an actual Chat-Function
+
+public class ChatPage extends Container{
     JPanel panel1, panelNavigation;
     JLabel lab;
     JFrame parentFrame;
     JButton back;
     
-    public Chat (JFrame parentFrame) {
+    public ChatPage (JFrame parentFrame) {
     this.parentFrame = parentFrame;
     setLayout(new BorderLayout());
     panel1 = new JPanel();
     panelNavigation = new MenuBar(parentFrame);
-    URL url = Chat.class.getResource("Chat.png");           
+    URL url = ChatPage.class.getResource("Chat.png");           
     ImageIcon bild = new ImageIcon(url);
     lab = new JLabel (bild);
     panel1.add(lab);

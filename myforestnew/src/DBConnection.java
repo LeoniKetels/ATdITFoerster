@@ -2,6 +2,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * 
+ * @author Gruppe 1
+ * establishes connection to database
+ * provides methods to get data
+ *
+ */
 public class DBConnection {
 	static Connection conn;
 
@@ -118,6 +126,11 @@ public class DBConnection {
 		}
 	}
 	
+	/**
+	 * get all entries in the Problem table that have the 'in Progress' Status
+	 * 
+	 * @return ArrayList of Problems
+	 */
 	public List<Problem> getProblemsInProgress(){
 		List<Problem> list = new ArrayList<Problem>();
 
@@ -135,6 +148,11 @@ public class DBConnection {
 		}
 	}
 
+	/**
+	 * 
+	 * @param id of the status 
+	 * @return the status with said id
+	 */
 	public Status getStatusById(int id) {
 		try (Statement stmt = conn.createStatement()) {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM status WHERE id =" + id + "");
@@ -193,6 +211,10 @@ public class DBConnection {
 		}
 	}
 	
+	/**
+	 * insert an area into the database table Area
+	 * @param area
+	 */
 	public void insertArea(Area area){
 		String stmt = "INSERT INTO area(id, description) VALUES(?,?)";
 		try (PreparedStatement pstmt = conn.prepareStatement(stmt)) {
@@ -204,6 +226,10 @@ public class DBConnection {
 		}
 	}
 	
+	/**
+	 * insert a status into the database table Status
+	 * @param status
+	 */
 	public void insertStatus(Status status){
 		String stmt = "INSERT INTO status(id, description) VALUES(?,?)";
 		try (PreparedStatement pstmt = conn.prepareStatement(stmt)) {
@@ -215,21 +241,14 @@ public class DBConnection {
 		}
 	}
 
+	
+	/**
+	 * close the Database Connection 
+	 */
 	public void close() {
 		try {
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static void main(String[] args) {
-		try {
-			DBConnection dbConnection = new DBConnection();
-			List<Problem> data = dbConnection.getProblemsInProgress();
-			System.out.println(data.toString());
-			
-		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
