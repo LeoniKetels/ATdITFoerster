@@ -1,62 +1,66 @@
-import java.awt.*;
+import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-import javax.swing.*;
+public class ProblemDetailPage extends JFrame  {
+	
+	public JTextArea ProblemFeld;
+	public JScrollPane sp;
+	public JTextArea Baummenu;
+	public JTextArea Standortfeld;
+    public JScrollPane sp2;
+    public JTextArea BildFeld;
+    public JScrollPane sp3;
 
-/**
- * 
- * @author Gruppe 1 
- * 
- * Container to display one Problem 
- *
- */
-public class ProblemDetailPage extends Container{
-	
-	JFrame parentFrame;
-	JPanel menuBar, panelMiddle;
-	JTable table;
-	JButton btnChangeStatus;
-	JComboBox<String> cboxStatuses;
-	List<Status> statuses;
-	
-	
-	public ProblemDetailPage(JFrame parentFrame, Problem problem) {
-		try {
-			DBConnection dbConnection = new DBConnection();
-			 statuses = dbConnection.getAllStatuses();
-			 dbConnection.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		String[] statusDescriptions = new String[statuses.size()]; 
-		int i = 0;
-		for(Status status : statuses) {
-			statusDescriptions[i] = status.getDescription(); 
-			i++;
-		}
-		
-		cboxStatuses = new JComboBox<String>(statusDescriptions);
-		btnChangeStatus = new JButton("Change Status");
-		
-        menuBar = new MenuBar(parentFrame);
-        
-        add(menuBar, BorderLayout.NORTH);
-        add(panelMiddle, BorderLayout.CENTER);
-        setVisible(true);
-	}
-	
-	class ButtonListener implements ActionListener{
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			cboxStatuses.getSelectedItem();
-			
-			
-		}
-		
-	}
+ 
+    public ProblemDetailPage() {
+        Container c = getContentPane();
+        c.setLayout(new GridLayout(10, 1));
+        String[] namen = new String []
+                {"Eiche", "Buche", "Tanne", "Ahorn", "Kastanie"};
+        String[] Gebiet = new String []
+                {"Gebiet 1", "Gebiet 2", "Gebiet 3", "Gebiet 4", "Gebiet 5", "Gebiet 6", "Gebiet 7", "Gebiet 8", "Gebiet 9"};
+        JLabel Problem = new JLabel("Problembeschreibung:");
+        JLabel Baumart = new JLabel("Baumart:");
+        JLabel Gebiet1 = new JLabel("Gebiet:");
+        JLabel Standort = new JLabel("Standortkoordinaten:");
+        JLabel Bild = new JLabel("Bild:");
+        ProblemFeld = new JTextArea();
+        ProblemFeld.setLineWrap(true);
+        sp = new JScrollPane(ProblemFeld);
+        JComboBox Baummenu = new JComboBox(namen);
+        JComboBox Gebietmenu = new JComboBox(Gebiet);
+        Standortfeld = new JTextArea();
+        sp2 = new JScrollPane(Standortfeld);
+        BildFeld = new JTextArea();
+        sp3 = new JScrollPane(BildFeld);
+        JButton knopf = new JButton("Hinzufuegen");
+        c.add(Problem);
+        c.add(sp);
+        c.add(Baumart);
+        c.add(Baummenu);
+        c.add(Gebiet1);
+        c.add(Gebietmenu);
+        c.add(Standort);
+        c.add(sp2);
+        c.add(Bild);
+        c.add(sp3);
+        c.add(knopf);
+    }
+
+ public static void main(String[] args) {
+        ProblemDetailPage fenster = new ProblemDetailPage();
+        fenster.setTitle("Problem");
+        fenster.setSize(500, 300);
+        fenster.setVisible(true);
+        fenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 }
