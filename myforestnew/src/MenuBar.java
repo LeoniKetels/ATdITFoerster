@@ -11,7 +11,7 @@ import java.net.URL;
  *
  */
 public class MenuBar extends JPanel {
-	JButton main, shop, chat, problems, tasks ;
+	private JButton main, shop, chat, problems, tasks ;
 	
 	public MenuBar(JFrame parentFrame ) {
 		setLayout(new GridLayout(1,5));

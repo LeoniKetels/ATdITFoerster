@@ -12,30 +12,30 @@ import javax.swing.*;
  * Container to display Problems in a table 
  *
  */
+
+//will be extended so one can click a button to set the status to in progress
+
 public class ProblemPage extends Container{
 	
-	JFrame parentFrame;
-	JPanel menuBar, panelMiddle;
-	JTable table;
-	JScrollPane scrollpane;
-	JButton btnAdd;
+	private JFrame parentFrame;
+	private JPanel panelMiddle;
+	private MenuBar menuBar;
+	private JTable table;
+	private JScrollPane scrollpane;
+	private JButton btnAdd;
+	List<Problem> problems; 
+	List<Area> areas; 
+	List<Status> statuses; 
 	
-	public ProblemPage(JFrame parentFrame) {
-		List<Problem> data = new ArrayList<Problem>();
-		try {
-		DBConnection dbConnection = new DBConnection();
-		data = dbConnection.getAllProblems();
-		dbConnection.close();
-		
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+	
+	public ProblemPage(JFrame parentFrame, List<Problem> problems,List<Area> areas, List<Status> statuses ) {
+		this.parentFrame = parentFrame;
 		
 		btnAdd = new JButton("+");
 		btnAdd.addActionListener(new ButtonListener());
 		
 		table = new JTable();
-		ProblemTableModel tableModel = new ProblemTableModel(data);
+		ProblemTableModel tableModel = new ProblemTableModel(problems, areas, statuses);
 		table.setModel(tableModel);
 		table.setSize(200,200);
 		
@@ -43,7 +43,6 @@ public class ProblemPage extends Container{
 		panelMiddle = new JPanel();
 		panelMiddle.add(btnAdd);
 		panelMiddle.add(scrollpane);
-		this.parentFrame = parentFrame;
 		setLayout(new BorderLayout());
 		
         menuBar = new MenuBar(parentFrame);
@@ -58,10 +57,9 @@ public class ProblemPage extends Container{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			ProblemForm fenster = new ProblemForm();
-	        fenster.setTitle("Problem");
+	        fenster.setTitle("Problem hinzufügen");
 	        fenster.setSize(500, 300);
 	        fenster.setVisible(true);
-	        fenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 		}
 		

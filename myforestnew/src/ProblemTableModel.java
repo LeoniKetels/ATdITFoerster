@@ -10,11 +10,13 @@ import javax.swing.table.AbstractTableModel;
 
 public class ProblemTableModel extends AbstractTableModel {
 	List<Problem> problems;
+	List<Area> areas;
+	List<Status> statuses;
 	
 	 private static final String[] columns = new String[]{"ID", "Beschreibung", "Bereich", "Status", "Baum"};
 
 	
-	public ProblemTableModel(List<Problem> problems) {
+	public ProblemTableModel(List<Problem> problems, List<Area> areas, List<Status>statuses) {
 		this.problems = problems;
 	}
 	 @Override
@@ -46,7 +48,7 @@ public class ProblemTableModel extends AbstractTableModel {
                     return problem.getDescription();
                 case 2:
                 	int area = problem.getArea_id();
-                    return dbConnection.getAreaById(area).getDescription();
+                    
                 case 3:
                 	int status = problem.getStatus_id();
                     return dbConnection.getStatusById(status).getDescription();
@@ -71,5 +73,6 @@ public class ProblemTableModel extends AbstractTableModel {
 	        }
 	        return null;
 	    }
+	 
 
 }

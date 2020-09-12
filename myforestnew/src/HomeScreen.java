@@ -29,10 +29,10 @@ import javax.swing.JPanel;
  *
  */
 public class HomeScreen extends Container {
-	JButton start;
-	JLabel lab;
-	JPanel panel1, panel2;
-	JFrame parentFrame;
+	private JButton start;
+	private JLabel lab;
+	private JPanel panel1, panel2;
+	private JFrame parentFrame;
 	
 	public HomeScreen (JFrame parentFrame) {
 	this.parentFrame = parentFrame;

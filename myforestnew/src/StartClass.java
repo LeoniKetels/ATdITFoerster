@@ -10,7 +10,7 @@ import javax.swing.JPanel;
  *
  */
 public class StartClass extends JFrame {
-	Container c, content;
+	private Container c, content;
 	
 	public StartClass() {
 		c = this.getContentPane();
@@ -31,7 +31,7 @@ public class StartClass extends JFrame {
 		start.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void setContent(Container content) {
+	private void setContent(Container content) {
 		this.content = content; 
 		c.add(content, BorderLayout.CENTER);
 	}

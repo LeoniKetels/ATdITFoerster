@@ -32,32 +32,16 @@ public class Problem {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public int getArea_id() {
 		return area_id;
-	}
-
-	public void setArea_id(int area_id) {
-		this.area_id = area_id;
 	}
 
 	public int getStatus_id() {
 		return status_id;
 	}
 
-	public void setStatus_id(int status_id) {
-		this.status_id = status_id;
-	}
-
 	public String getTree() {
 		return tree;
-	}
-
-	public void setTree(String tree) {
-		this.tree = tree;
 	}
 
 }

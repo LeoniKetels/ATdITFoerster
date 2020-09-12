@@ -17,46 +17,44 @@ import javax.swing.JTextArea;
  */
 public class ProblemForm extends JFrame {
 	public JScrollPane sp, sp2, sp3;
-	public JComboBox<String> baummenu;
+	public JComboBox<String> baummenu, gebietmenu;
 	public JTextArea standortfeld, bildFeld, problemFeld;
 	public JLabel problem, baumart, standort, bild;
 	public JFrame frame = this;
 
 	public ProblemForm() {
 		Container c = getContentPane();
-		c.setLayout(new GridLayout(10, 1));
-
-		String[] namen = new String[] { "Eiche", "Buche", "Tanne", "Ahorn", "Kastanie" };
-
-		problem = new JLabel("Problembeschreibung:");
-		baumart = new JLabel("Baumart:");
-		standort = new JLabel("Standortkoordinaten:");
-		bild = new JLabel("Bild:");
-
-		problemFeld = new JTextArea();
-		problemFeld.setLineWrap(true);
-
-		sp = new JScrollPane(problemFeld);
-		baummenu = new JComboBox<String>(namen);
-		
-		standortfeld = new JTextArea();
-		sp2 = new JScrollPane(standortfeld);
-		
-		bildFeld = new JTextArea();
-		sp3 = new JScrollPane(bildFeld);
-		
-		JButton knopf = new JButton("Hinzufügen");
-		knopf.addActionListener(new ButtonListener());
-
-		c.add(problem);
-		c.add(sp);
-		c.add(baumart);
-		c.add(baummenu);
-		c.add(standort);
-		c.add(sp2);
-		c.add(bild);
-		c.add(sp3);
-		c.add(knopf);
+        c.setLayout(new GridLayout(10, 1));
+        String[] namen = new String []
+                {"Eiche", "Buche", "Tanne", "Ahorn", "Kastanie"};
+        String[] Gebiet = new String []
+                {"A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"};
+        JLabel Problem = new JLabel("Problembeschreibung:");
+        JLabel Baumart = new JLabel("Baumart:");
+        JLabel Gebiet1 = new JLabel("Gebiet:");
+        JLabel Standort = new JLabel("Standortkoordinaten:");
+        JLabel Bild = new JLabel("Bild:");
+        problemFeld = new JTextArea();
+        problemFeld.setLineWrap(true);
+        sp = new JScrollPane(problemFeld);
+        baummenu = new JComboBox<String>(namen);
+        gebietmenu = new JComboBox<String>(Gebiet);
+        standortfeld = new JTextArea();
+        sp2 = new JScrollPane(standortfeld);
+        bildFeld = new JTextArea();
+        sp3 = new JScrollPane(bildFeld);
+        JButton knopf = new JButton("Hinzufuegen");
+        c.add(Problem);
+        c.add(sp);
+        c.add(Baumart);
+        c.add(baummenu);
+        c.add(Gebiet1);
+        c.add(gebietmenu);
+        c.add(Standort);
+        c.add(sp2);
+        c.add(Bild);
+        c.add(sp3);
+        c.add(knopf);
 	}
 
 	class ButtonListener implements ActionListener {
@@ -66,9 +64,12 @@ public class ProblemForm extends JFrame {
 			try {
 				String description = problemFeld.getText();
 				String baum = (String) baummenu.getSelectedItem();
-
+				
+				//not really pretty or clean but the easiest way to do this rn :/
+				int area = gebietmenu.getSelectedIndex();
+ 
 				DBConnection dbConnection = new DBConnection();
-				dbConnection.insertProblem(new Problem(description, 1, 1, baum));
+				dbConnection.insertProblem(new Problem(description, area, 1, baum));
 				dbConnection.close();
 
 				frame.dispose();
@@ -79,5 +80,13 @@ public class ProblemForm extends JFrame {
 		}
 
 	}
+	
+	 public static void main(String[] args) {
+	        ProblemForm fenster = new ProblemForm();
+	        fenster.setTitle("Problem");
+	        fenster.setSize(500, 300);
+	        fenster.setVisible(true);
+	        fenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    }
 
 }

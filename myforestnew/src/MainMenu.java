@@ -9,18 +9,15 @@ import javax.swing.*;
  */
 public class MainMenu extends Container  {
 
-	public JTextField eingabeDateiFeld, ausgabeDateiFeld;
-	JPanel panelTitle,panelWeather,panelMap, menuBar;
-	JPanel panelMiddle;
-	JLabel labelTitle,labelWeather,labelMap;
-	JFrame parentFrame;
+	private MenuBar menuBar;
+	private JPanel panelMiddle;
+	private JLabel labelWeather,labelMap;
+	private JFrame parentFrame;
 
 
 	public MainMenu (JFrame parentframe){
 		this.parentFrame = parentframe;
 		setLayout(new BorderLayout());
-        panelWeather 	= new JPanel();
-        panelMap		= new JPanel();
         menuBar		 	= new MenuBar(parentFrame);
 
         URL weatherUrl 	= MainMenu.class.getResource("weatherImage.png");

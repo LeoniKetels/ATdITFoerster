@@ -9,6 +9,8 @@ import javax.swing.*;
  * @author Gruppe 1
  * Container to display Tasks in a table
  */
+
+//will be extended so one can click a button to set the status to completed
 public class TaskPage extends Container{
 	
 	JFrame parentFrame;
@@ -16,20 +18,12 @@ public class TaskPage extends Container{
 	JTable table;
 	JScrollPane scrollpane;
 	
-	public TaskPage(JFrame parentFrame) {
-		List<Problem> data = new ArrayList<Problem>();
-		try {
-		DBConnection dbConnection = new DBConnection();
-		data = dbConnection.getProblemsInProgress();
-		dbConnection.close();
+	public TaskPage(JFrame parentFrame, List<Problem> dataProblems, List<Area> areas, List<Status>status) {
 		
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
 		
-		if (!data.isEmpty()) {
+		if (!dataProblems.isEmpty()) {
 			table = new JTable();
-			ProblemTableModel tableModel = new ProblemTableModel(data);
+			ProblemTableModel tableModel = new ProblemTableModel(dataProblems, areas, status);
 			table.setModel(tableModel);
 			table.setSize(200,200);
 			
