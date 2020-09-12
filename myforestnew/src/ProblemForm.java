@@ -38,21 +38,21 @@ public class ProblemForm extends JFrame {
         problemFeld.setLineWrap(true);
         sp = new JScrollPane(problemFeld);
         baummenu = new JComboBox<String>(namen);
-        gebietmenu = new JComboBox<String>(Gebiet);
+        gebietmenu = new JComboBox<String>(gebiet);
         standortfeld = new JTextArea();
         sp2 = new JScrollPane(standortfeld);
         bildFeld = new JTextArea();
         sp3 = new JScrollPane(bildFeld);
         JButton knopf = new JButton("Hinzufuegen");
-        c.add(Problem);
+        c.add(problem);
         c.add(sp);
-        c.add(Baumart);
+        c.add(baumart);
         c.add(baummenu);
-        c.add(Gebiet1);
+        c.add(gebiet1);
         c.add(gebietmenu);
-        c.add(Standort);
+        c.add(standort);
         c.add(sp2);
-        c.add(Bild);
+        c.add(bild);
         c.add(sp3);
         c.add(knopf);
 	}
