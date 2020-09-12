@@ -27,13 +27,13 @@ public class ProblemForm extends JFrame {
         c.setLayout(new GridLayout(10, 1));
         String[] namen = new String []
                 {"Eiche", "Buche", "Tanne", "Ahorn", "Kastanie"};
-        String[] Gebiet = new String []
+        String[] gebiet = new String []
                 {"A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"};
-        JLabel Problem = new JLabel("Problembeschreibung:");
-        JLabel Baumart = new JLabel("Baumart:");
-        JLabel Gebiet1 = new JLabel("Gebiet:");
-        JLabel Standort = new JLabel("Standortkoordinaten:");
-        JLabel Bild = new JLabel("Bild:");
+        JLabel problem = new JLabel("Problembeschreibung:");
+        JLabel baumart = new JLabel("Baumart:");
+        JLabel gebiet1 = new JLabel("Gebiet:");
+        JLabel standort = new JLabel("Standortkoordinaten:");
+        JLabel bild = new JLabel("Bild:");
         problemFeld = new JTextArea();
         problemFeld.setLineWrap(true);
         sp = new JScrollPane(problemFeld);
