@@ -15,20 +15,21 @@ import javax.swing.*;
 
 
 public class ShopPage extends Container{
-    JPanel panel1, panelNavigation;
-    JLabel lab;
-    JFrame parentFrame;
+    private JPanel panel1;
+    private MenuBar menuBar;
+    private JLabel lab;
+    private JFrame parentFrame;
     
     public ShopPage (JFrame parentFrame) {
     this.parentFrame = parentFrame;
     setLayout(new BorderLayout());
     panel1 = new JPanel();
-    panelNavigation = new MenuBar(parentFrame);
+    menuBar = new MenuBar(parentFrame);
     //URL url = Shop.class.getResource("Shop.png");           
     //ImageIcon bild = new ImageIcon(url);
     //lab = new JLabel (bild);
     //panel1.add(lab);
-    add(panelNavigation, BorderLayout.NORTH);
+    add(menuBar, BorderLayout.NORTH);
     setBackground(Color.white);
     }
 }

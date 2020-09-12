@@ -13,10 +13,11 @@ import javax.swing.*;
 //will be extended so one can click a button to set the status to completed
 public class TaskPage extends Container{
 	
-	JFrame parentFrame;
-	JPanel menuBar, panelMiddle;
-	JTable table;
-	JScrollPane scrollpane;
+	private JFrame parentFrame;
+	private JPanel  panelMiddle;
+	private MenuBar menuBar;
+	private JTable table;
+	private JScrollPane scrollpane;
 	
 	public TaskPage(JFrame parentFrame, List<Problem> dataProblems, List<Area> areas, List<Status>status) {
 		

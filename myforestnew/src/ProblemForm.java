@@ -16,11 +16,11 @@ import javax.swing.JTextArea;
  *
  */
 public class ProblemForm extends JFrame {
-	public JScrollPane sp, sp2, sp3;
-	public JComboBox<String> baummenu, gebietmenu;
-	public JTextArea standortfeld, bildFeld, problemFeld;
-	public JLabel problem, baumart, standort, bild;
-	public JFrame frame = this;
+	private JScrollPane sp, sp2, sp3;
+	private JComboBox<String> baummenu, gebietmenu;
+	private JTextArea standortfeld, bildFeld, problemFeld;
+	private JLabel problem, baumart, standort, bild;
+	private JFrame frame = this;
 
 	public ProblemForm() {
 		Container c = getContentPane();
