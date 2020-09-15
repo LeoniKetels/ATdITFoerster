@@ -168,13 +168,14 @@ public class DBConnection {
 	}
 
 	private Problem convertProblemRow(ResultSet rs) throws SQLException {
+		//bug: id is always 0 although the id in the database is set correctly
 		int id = rs.getInt("id");
 		String description = rs.getString("description");
 		int area_id = rs.getInt("area_id");
 		int status_id = rs.getInt("status_id");
 		String tree = rs.getString("tree");
 
-		return new Problem(description, area_id, status_id, tree);
+		return new Problem(id, description, area_id, status_id, tree);
 	}
 
 	private Area convertAreaRow(ResultSet rs) throws SQLException {
@@ -252,4 +253,17 @@ public class DBConnection {
 			e.printStackTrace();
 		}
 	}
+	
+//	public static void main(String[] args) {
+//		DBConnection db;
+//		try {
+//			db = new DBConnection();
+//			db.insertProblem(new Problem(0,"Baum auf Gehweg", 5, 3, "Birke") );
+//			System.out.println(db.getProblemByID(6));
+////			System.out.println(db.getAllProblems());
+//			db.close();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 }

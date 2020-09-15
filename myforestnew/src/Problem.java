@@ -10,7 +10,7 @@ public class Problem {
 	private int status_id;
 	private String tree; 
 	
-	public Problem(String description, int area_id, int status_id, String tree) {
+	public Problem(int id, String description, int area_id, int status_id, String tree) {
 		this.description = description;
 		this.area_id = area_id;
 		this.status_id = status_id;

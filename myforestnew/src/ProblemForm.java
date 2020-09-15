@@ -69,7 +69,7 @@ public class ProblemForm extends JFrame {
 				int area = gebietmenu.getSelectedIndex();
  
 				DBConnection dbConnection = new DBConnection();
-				dbConnection.insertProblem(new Problem(description, area, 1, baum));
+				dbConnection.insertProblem(new Problem(0, description, area, 1, baum));
 				dbConnection.close();
 
 				frame.dispose();
