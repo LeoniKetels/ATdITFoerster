@@ -10,6 +10,8 @@ import java.util.List;
  * provides methods to get data
  *
  */
+
+//will become a Singleton 
 public class DBConnection {
 	static Connection conn;
 

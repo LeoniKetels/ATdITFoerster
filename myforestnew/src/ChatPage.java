@@ -14,9 +14,9 @@ import javax.swing.*;
 
 public class ChatPage extends Container{
     JPanel panel1, panelNavigation;
-    JLabel lab;
+    JLabel label;
     JFrame parentFrame;
-    JButton back;
+    JButton btnBack;
     
     public ChatPage (JFrame parentFrame) {
     this.parentFrame = parentFrame;
@@ -25,8 +25,8 @@ public class ChatPage extends Container{
     panelNavigation = new MenuBar(parentFrame);
     URL url = ChatPage.class.getResource("Chat.png");           
     ImageIcon bild = new ImageIcon(url);
-    lab = new JLabel (bild);
-    panel1.add(lab);
+    label = new JLabel (bild);
+    panel1.add(label);
     add(panelNavigation, BorderLayout.NORTH);
     add(panel1, BorderLayout.CENTER);
     

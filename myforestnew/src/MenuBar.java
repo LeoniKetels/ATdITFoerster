@@ -11,7 +11,7 @@ import java.net.URL;
  *
  */
 public class MenuBar extends JPanel {
-	private JButton main, shop, chat, problems, tasks ;
+	private JButton btnMain, btnShop, btnChat, btnProblems, btnTasks ;
 	
 	public MenuBar(JFrame parentFrame ) {
 		setLayout(new GridLayout(1,5));
@@ -19,31 +19,31 @@ public class MenuBar extends JPanel {
 	    Icon icon = new ImageIcon(url);
 	    
 	    
-		main 		= new JButton(icon);
-		shop 		= new JButton("Shop");
-		chat 		= new JButton("Chat");
-		problems 	= new JButton("Probleme");
-		tasks	 	= new JButton("Aufgaben");
+		btnMain 		= new JButton(icon);
+		btnShop 		= new JButton("Shop");
+		btnChat 		= new JButton("Chat");
+		btnProblems 	= new JButton("Probleme");
+		btnTasks	 	= new JButton("Aufgaben");
 		
 		
-	    main.addActionListener(new navButtonListener( parentFrame, navButtonListener.MAIN_MENU));
-	    shop.addActionListener(new navButtonListener( parentFrame, navButtonListener.SHOP_PAGE));
-	    chat.addActionListener(new navButtonListener( parentFrame, navButtonListener.CHAT_PAGE));
-	    problems.addActionListener(new navButtonListener( parentFrame, navButtonListener.PROBLEM_PAGE));
-	    tasks.addActionListener(new navButtonListener( parentFrame, navButtonListener.TASK_PAGE));
+	    btnMain.addActionListener(new NavButtonListener( parentFrame, NavButtonListener.MAIN_MENU));
+	    btnShop.addActionListener(new NavButtonListener( parentFrame, NavButtonListener.SHOP_PAGE));
+	    btnChat.addActionListener(new NavButtonListener( parentFrame, NavButtonListener.CHAT_PAGE));
+	    btnProblems.addActionListener(new NavButtonListener( parentFrame, NavButtonListener.PROBLEM_PAGE));
+	    btnTasks.addActionListener(new NavButtonListener( parentFrame, NavButtonListener.TASK_PAGE));
 	    
-	    tasks.setBackground(Color.WHITE);
-	    main.setBackground(Color.WHITE);
-	    problems.setBackground(Color.WHITE);
-	    shop.setBackground(Color.WHITE);
-	    chat.setBackground(Color.WHITE);
+	    btnTasks.setBackground(Color.WHITE);
+	    btnMain.setBackground(Color.WHITE);
+	    btnProblems.setBackground(Color.WHITE);
+	    btnShop.setBackground(Color.WHITE);
+	    btnChat.setBackground(Color.WHITE);
 	    
 	    setBackground(Color.white);
 	    
-	    add(problems);
-	    add(tasks);
-	    add(main);
-	    add(shop);
-	    add(chat);
+	    add(btnProblems);
+	    add(btnTasks);
+	    add(btnMain);
+	    add(btnShop);
+	    add(btnChat);
 	}
 }

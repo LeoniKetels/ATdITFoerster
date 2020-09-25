@@ -18,8 +18,8 @@ import javax.swing.JTextArea;
 public class ProblemForm extends JFrame {
 	private JScrollPane sp, sp2, sp3;
 	private JComboBox<String> baummenu, gebietmenu;
-	private JTextArea standortfeld, bildFeld, problemFeld;
-	private JLabel problem, baumart, standort, bild;
+	private JTextArea standortTextArea, bildTextArea, problemTextArea;
+	private JLabel lblProblem, lblBaumart, lblStandort, lblBild, lblGebiet;
 	private JFrame frame = this;
 
 	public ProblemForm() {
@@ -29,30 +29,30 @@ public class ProblemForm extends JFrame {
                 {"Eiche", "Buche", "Tanne", "Ahorn", "Kastanie"};
         String[] gebiet = new String []
                 {"A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"};
-        JLabel problem = new JLabel("Problembeschreibung:");
-        JLabel baumart = new JLabel("Baumart:");
-        JLabel gebiet1 = new JLabel("Gebiet:");
-        JLabel standort = new JLabel("Standortkoordinaten:");
-        JLabel bild = new JLabel("Bild:");
-        problemFeld = new JTextArea();
-        problemFeld.setLineWrap(true);
-        sp = new JScrollPane(problemFeld);
+        lblProblem = new JLabel("Problembeschreibung:");
+        lblBaumart = new JLabel("Baumart:");
+        lblGebiet = new JLabel("Gebiet:");
+        lblStandort = new JLabel("Standortkoordinaten:");
+        lblBild = new JLabel("Bild:");
+        problemTextArea = new JTextArea();
+        problemTextArea.setLineWrap(true);
+        sp = new JScrollPane(problemTextArea);
         baummenu = new JComboBox<String>(namen);
         gebietmenu = new JComboBox<String>(gebiet);
-        standortfeld = new JTextArea();
-        sp2 = new JScrollPane(standortfeld);
-        bildFeld = new JTextArea();
-        sp3 = new JScrollPane(bildFeld);
+        standortTextArea = new JTextArea();
+        sp2 = new JScrollPane(standortTextArea);
+        bildTextArea = new JTextArea();
+        sp3 = new JScrollPane(bildTextArea);
         JButton knopf = new JButton("Hinzufuegen");
-        c.add(problem);
+        c.add(lblProblem);
         c.add(sp);
-        c.add(baumart);
+        c.add(lblBaumart);
         c.add(baummenu);
-        c.add(gebiet1);
+        c.add(lblGebiet);
         c.add(gebietmenu);
-        c.add(standort);
+        c.add(lblStandort);
         c.add(sp2);
-        c.add(bild);
+        c.add(lblBild);
         c.add(sp3);
         c.add(knopf);
 	}
@@ -62,10 +62,10 @@ public class ProblemForm extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent ae) {
 			try {
-				String description = problemFeld.getText();
+				String description = problemTextArea.getText();
 				String baum = (String) baummenu.getSelectedItem();
 				
-				//not really pretty or clean but the easiest way to do this rn :/
+				//this only works because the index in the Combobox is the same as the DB id 
 				int area = gebietmenu.getSelectedIndex();
  
 				DBConnection dbConnection = new DBConnection();

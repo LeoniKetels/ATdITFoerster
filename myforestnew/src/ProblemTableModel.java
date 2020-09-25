@@ -40,7 +40,7 @@ public class ProblemTableModel extends AbstractTableModel {
 		try {
 		Problem problem = getProblem(rowIndex);
 		DBConnection dbConnection = new DBConnection();
-        if(problem != null) {
+        if(!(problem == null)) {
             switch (columnIndex) {
                 case 0:
                     return problem.getId();
@@ -69,6 +69,7 @@ public class ProblemTableModel extends AbstractTableModel {
 	
 	 public Problem getProblem(int rowIndex) {
 	        if (getRowCount() > rowIndex && rowIndex >= 0) {
+	        	
 	            return problems.get(rowIndex);
 	        }
 	        return null;

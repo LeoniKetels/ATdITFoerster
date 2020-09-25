@@ -10,8 +10,8 @@ import javax.swing.JFrame;
  *
  */
 
-//will become a Singleton 
-public class navButtonListener implements ActionListener {
+
+public class NavButtonListener implements ActionListener {
 	
 	String destinationPage;
 	JFrame frame;
@@ -22,11 +22,11 @@ public class navButtonListener implements ActionListener {
 	public static final String TASK_PAGE  = "task";
 	public static final String PROBLEM_PAGE  = "problem";
 	List<Problem> dataProblems, dataProblemsInProgress;
-	 List<Area> dataAreas;
-	 List<Status> dataStatus;
+	List<Area> dataAreas;
+	List<Status> dataStatus;
 	
 	
-	 public navButtonListener(JFrame frame, String destinationPage) {
+	 public NavButtonListener(JFrame frame, String destinationPage) {
 		 this.destinationPage = destinationPage;
 		 this.frame = frame;
 		 dataProblems = new ArrayList<Problem>();
@@ -66,7 +66,6 @@ public class navButtonListener implements ActionListener {
 			break;
 		}
 		frame.setVisible(true);
-		
 	}
 
 }
