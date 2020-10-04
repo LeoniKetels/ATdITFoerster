@@ -1,3 +1,4 @@
+package main;
 /**
  * @author Gruppe 1
  * 
