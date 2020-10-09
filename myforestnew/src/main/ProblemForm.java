@@ -45,6 +45,7 @@ public class ProblemForm extends JFrame {
         bildTextArea = new JTextArea();
         sp3 = new JScrollPane(bildTextArea);
         JButton knopf = new JButton("Hinzufuegen");
+        knopf.addActionListener(new ButtonListener());
         c.add(lblProblem);
         c.add(sp);
         c.add(lblBaumart);
@@ -56,6 +57,7 @@ public class ProblemForm extends JFrame {
         c.add(lblBild);
         c.add(sp3);
         c.add(knopf);
+        
 	}
 
 	class ButtonListener implements ActionListener {
@@ -70,9 +72,8 @@ public class ProblemForm extends JFrame {
 				int area = gebietmenu.getSelectedIndex();
  
 				DBConnection dbConnection = new DBConnection();
-				dbConnection.insertProblem(new Problem(0, description, area, 1, baum));
-				dbConnection.close();
-
+				dbConnection.insertProblem(new Problem(0, description, area, 2, baum));
+				
 				frame.dispose();
 
 			} catch (Exception e) {
