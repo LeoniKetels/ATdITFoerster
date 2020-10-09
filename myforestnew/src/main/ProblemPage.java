@@ -23,7 +23,7 @@ public class ProblemPage extends Container{
 	private MenuBar menuBar;
 	private JTable table;
 	private JScrollPane scrollpane;
-	private JButton btnAdd;
+	private JButton btnAdd, refreshButton;
 	List<Problem> problems; 
 	List<Area> areas; 
 	List<Status> statuses; 
@@ -35,6 +35,9 @@ public class ProblemPage extends Container{
 		btnAdd = new JButton("+");
 		btnAdd.addActionListener(new ButtonListener());
 		
+		refreshButton = new JButton("refresh");
+		refreshButton.addActionListener(new NavButtonListener(parentFrame, NavButtonListener.PROBLEM_PAGE));
+		
 		table = new JTable();
 		ProblemTableModel tableModel = new ProblemTableModel(problems, areas, statuses);
 		table.setModel(tableModel);
@@ -43,6 +46,7 @@ public class ProblemPage extends Container{
 		scrollpane = new JScrollPane(table);
 		panelMiddle = new JPanel();
 		panelMiddle.add(btnAdd);
+		panelMiddle.add(refreshButton);
 		panelMiddle.add(scrollpane);
 		setLayout(new BorderLayout());
 		
@@ -65,4 +69,5 @@ public class ProblemPage extends Container{
 		}
 		
 	}
+
 }
