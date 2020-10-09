@@ -17,7 +17,7 @@ public class MenuBar extends JPanel {
 	
 	public MenuBar(JFrame parentFrame ) {
 		setLayout(new GridLayout(1,5));
-		URL url = MenuBar.class.getResource("Icon.png");
+		URL url = MenuBar.class.getResource("../resources/Icon.png");
 	    Icon icon = new ImageIcon(url);
 	    
 	    

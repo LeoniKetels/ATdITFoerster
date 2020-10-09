@@ -21,8 +21,8 @@ public class MainMenu extends Container  {
 		setLayout(new BorderLayout());
         menuBar		 	= new MenuBar(parentFrame);
 
-        URL weatherUrl 	= MainMenu.class.getResource("weatherImage.png");
-        URL mapUrl 		= MainMenu.class.getResource("map.png");
+        URL weatherUrl 	= MainMenu.class.getResource("../resources/weatherImage.png");
+        URL mapUrl 		= MainMenu.class.getResource("../resources/map.png");
         Icon weather 	= new ImageIcon(weatherUrl);
         Icon map 		= new ImageIcon(mapUrl);
         
