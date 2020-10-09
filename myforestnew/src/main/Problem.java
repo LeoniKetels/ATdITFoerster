@@ -1,3 +1,4 @@
+package main;
 /**
  * @author Gruppe 1
  * 
@@ -11,6 +12,7 @@ public class Problem {
 	private String tree; 
 	
 	public Problem(int id, String description, int area_id, int status_id, String tree) {
+		this.id = id;
 		this.description = description;
 		this.area_id = area_id;
 		this.status_id = status_id;

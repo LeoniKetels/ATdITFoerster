@@ -1,13 +1,14 @@
+package main;
 /**
  * @author Gruppe 1
  * 
- *Type to display Area from DB
+ *Type to display Status from DB
  */
-public class Area {
+public class Status {
 	private int id;
 	private String description;
 	
-	public Area(int id, String description) {
+	public Status(int id, String description) {
 		this.id = id; 
 		this.description = description;
 	}
@@ -15,7 +16,7 @@ public class Area {
 	@Override
 	public String toString() {
 		return String
-				.format("Area [id=%s, description=%s]",
+				.format("Status [id=%s, description=%s]",
 						id, description);
 	}
 
@@ -34,4 +35,5 @@ public class Area {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 }

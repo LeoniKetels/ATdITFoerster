@@ -1,3 +1,4 @@
+package main;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 
 //will become a Singleton 
 public class DBConnection {
-	static Connection conn;
+	public static Connection conn;
 
 	public DBConnection() throws Exception {
 
@@ -169,7 +170,7 @@ public class DBConnection {
 		}
 	}
 
-	private Problem convertProblemRow(ResultSet rs) throws SQLException {
+	public Problem convertProblemRow(ResultSet rs) throws SQLException {
 		//bug: id is always 0 although the id in the database is set correctly
 		int id = rs.getInt("id");
 		String description = rs.getString("description");
@@ -180,7 +181,7 @@ public class DBConnection {
 		return new Problem(id, description, area_id, status_id, tree);
 	}
 
-	private Area convertAreaRow(ResultSet rs) throws SQLException {
+	public Area convertAreaRow(ResultSet rs) throws SQLException {
 
 		int id = rs.getInt("id");
 		String description = rs.getString("description");
@@ -188,7 +189,7 @@ public class DBConnection {
 		return new Area(id, description);
 	}
 
-	private Status convertStatusRow(ResultSet rs) throws SQLException {
+	public Status convertStatusRow(ResultSet rs) throws SQLException {
 		int id = rs.getInt("id");
 		String description = rs.getString("description");
 		return new Status(id, description);
