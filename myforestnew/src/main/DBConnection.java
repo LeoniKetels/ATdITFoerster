@@ -17,10 +17,16 @@ public class DBConnection {
 	public static Connection conn;
 
 	public DBConnection() throws Exception {
-
+		
+		if(DBConnection.conn == null) {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(
-				"jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7355900?user=sql7355900&password=kHaqmas865");
+				"jdbc:mysql://localhost/myforestDB?"
+                        + "user=User&password=myforest");
+		}
+//		conn = DriverManager.getConnection(
+//				"jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7355900?user=sql7355900&password=kHaqmas865");
+//		}
 	}
 
 	/**
@@ -138,7 +144,7 @@ public class DBConnection {
 		List<Problem> list = new ArrayList<Problem>();
 
 		try (Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery("SELECT * FROM problem WHERE status_id= 3");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM problem WHERE status_id= 1");
 
 			while (rs.next()) {
 				Problem problem = convertProblemRow(rs);
@@ -249,7 +255,7 @@ public class DBConnection {
 	/**
 	 * close the Database Connection 
 	 */
-	public void close() {
+	public static void close() {
 		try {
 			conn.close();
 		} catch (SQLException e) {
@@ -261,10 +267,10 @@ public class DBConnection {
 //		DBConnection db;
 //		try {
 //			db = new DBConnection();
-//			db.insertProblem(new Problem(0,"Baum auf Gehweg", 5, 3, "Birke") );
-//			System.out.println(db.getProblemByID(6));
+//			db.insertProblem(new Problem(10,"Baum auf Gehweg", 5, 3, "Birke") );
+//			System.out.println(db.getProblemByID(10));
 ////			System.out.println(db.getAllProblems());
-//			db.close();
+//			DBConnection.close();
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}

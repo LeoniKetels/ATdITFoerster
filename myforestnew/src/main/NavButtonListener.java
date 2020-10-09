@@ -39,7 +39,6 @@ public class NavButtonListener implements ActionListener {
 			dataAreas = dbConnection.getAllAreas();
 			dataStatus = dbConnection.getAllStatuses();
 			dataProblemsInProgress = dbConnection.getProblemsInProgress();
-			dbConnection.close();
 			
 			}catch(Exception e) {
 				e.printStackTrace();

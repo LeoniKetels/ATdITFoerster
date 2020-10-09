@@ -49,7 +49,7 @@ public class ProblemTableModel extends AbstractTableModel {
                     return problem.getDescription();
                 case 2:
                 	int area = problem.getArea_id();
-                    
+                    return dbConnection.getAreaById(area).getDescription();
                 case 3:
                 	int status = problem.getStatus_id();
                     return dbConnection.getStatusById(status).getDescription();
@@ -58,11 +58,9 @@ public class ProblemTableModel extends AbstractTableModel {
             }
 
             }
-        dbConnection.close();
         }
 		catch( Exception e ) {
 			e.printStackTrace();
-
         }
         return "";	
         
@@ -70,7 +68,6 @@ public class ProblemTableModel extends AbstractTableModel {
 	
 	 public Problem getProblem(int rowIndex) {
 	        if (getRowCount() > rowIndex && rowIndex >= 0) {
-	        	
 	            return problems.get(rowIndex);
 	        }
 	        return null;

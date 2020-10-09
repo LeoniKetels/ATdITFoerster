@@ -2,8 +2,10 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /**
  * This is the starting point of the MyForest Application
@@ -29,7 +31,14 @@ public class StartClass extends JFrame {
 		start.setSize(1500, 1000);
 		start.setVisible(true);
 		start.setBackground(Color.white);
-		start.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		start.addWindowListener(new WindowAdapter() {
+			 
+			@Override
+			public void windowClosing(WindowEvent e) {
+				DBConnection.close();
+			    System.exit(0);
+			}
+		});
 	}
 	
 	private void setContent(Container content) {
