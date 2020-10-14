@@ -14,7 +14,7 @@ Starten der Anwendung über Eclipse:
 2. Anwendung in Eclipse Starten
   - Falls Sie Schritt 1 nicht zuvor erledigt haben, sollten Sie damit zuerst beginnen ;)
   - Eclipse starten
-  - Wenn Sie unser Projekt schon Importiert haben springen Sie zu Punkt X
+  - Springen Sie zu Punkt 7, wenn Sie unser Projekt bereits Importiert haben
   - Rechtsklick auf den Projekt Explorer -> Import -> Git -> Projects from Git -> Next -> Clone URI 
   - Fügen Sie folgenden Link in die URI Zeile ein: https://github.com/LeoniKetels/ATdITFoerster.git
   - Bestätigen Sie mit Next -> Next -> Wählen Sie eine Directory -> Finish
