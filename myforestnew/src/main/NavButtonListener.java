@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /**
  * This is a generic ActionListener for Navigation between different pages of the project
  * @author Gruppe 1
@@ -22,30 +23,14 @@ public class NavButtonListener implements ActionListener {
 	public static final String SHOP_PAGE = "shop";
 	public static final String TASK_PAGE  = "task";
 	public static final String PROBLEM_PAGE  = "problem";
-	List<Problem> dataProblems, dataProblemsInProgress;
-	List<Area> dataAreas;
-	List<Status> dataStatus;
 	
 	
 	 public NavButtonListener(JFrame frame, String destinationPage) {
 		 this.destinationPage = destinationPage;
 		 this.frame = frame;
-		 dataProblems = new ArrayList<Problem>();
-		 dataAreas = new ArrayList<Area>();
-		 dataStatus = new ArrayList<Status>();
-			try {
-			dbConnection = new DBConnection();
-			dataProblems = dbConnection.getAllProblems();
-			dataAreas = dbConnection.getAllAreas();
-			dataStatus = dbConnection.getAllStatuses();
-			dataProblemsInProgress = dbConnection.getProblemsInProgress();
-			
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		 }
-	 
 
+	 }
+	 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch(destinationPage) {
@@ -59,13 +44,14 @@ public class NavButtonListener implements ActionListener {
 			frame.setContentPane(new ShopPage(frame));
 			break;
 		case(PROBLEM_PAGE):
-			frame.setContentPane(new ProblemPage(frame, dataProblems, dataAreas, dataStatus));
+			frame.setContentPane(new ProblemPage(frame));
 			break;
 		case(TASK_PAGE):
-			frame.setContentPane(new TaskPage(frame, dataProblemsInProgress, dataAreas, dataStatus));
+			frame.setContentPane(new TaskPage(frame));
 			break;
 		}
 		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }

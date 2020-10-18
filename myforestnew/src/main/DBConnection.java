@@ -3,6 +3,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 
 /**
  * 
@@ -47,6 +50,7 @@ public class DBConnection {
 			return list;
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
+			new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
 			return null;
 		}
 	}
@@ -88,7 +92,8 @@ public class DBConnection {
 			}
 			return list;
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			JOptionPane.showMessageDialog(new JFrame(), "There was an Error with the database Connection. Please check if the database is set up correctly (README)", "Dialog",
+			        JOptionPane.ERROR_MESSAGE);
 			return null;
 		}
 	}
@@ -257,6 +262,7 @@ public class DBConnection {
 	 */
 	public static void close() {
 		try {
+			if(conn != null)
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

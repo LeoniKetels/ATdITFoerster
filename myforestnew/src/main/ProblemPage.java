@@ -27,10 +27,15 @@ public class ProblemPage extends Container{
 	List<Problem> problems; 
 	List<Area> areas; 
 	List<Status> statuses; 
+	DBConnection dbConnection;
 	
 	
-	public ProblemPage(JFrame parentFrame, List<Problem> problems,List<Area> areas, List<Status> statuses ) {
+	public ProblemPage(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
+		
+		if(problems == null) {
+			getData();
+		}
 		
 		btnAdd = new JButton("+");
 		btnAdd.addActionListener(new ButtonListener());
@@ -56,7 +61,17 @@ public class ProblemPage extends Container{
         add(panelMiddle, BorderLayout.CENTER);
         setVisible(true);
 	}
-	
+	private void getData(){
+			try {
+			dbConnection = new DBConnection();
+			problems = dbConnection.getAllProblems();
+			areas = dbConnection.getAllAreas();
+			statuses = dbConnection.getAllStatuses();
+			
+			}catch(Exception e) {
+				new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
+				  }
+	 }
 	class ButtonListener implements ActionListener{
 
 		@Override
@@ -65,7 +80,6 @@ public class ProblemPage extends Container{
 	        fenster.setTitle("Problem hinzufügen");
 	        fenster.setSize(500, 300);
 	        fenster.setVisible(true);
-			
 		}
 		
 	}
