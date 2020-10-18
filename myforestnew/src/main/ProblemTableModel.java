@@ -20,6 +20,7 @@ public class ProblemTableModel extends AbstractTableModel {
 	public ProblemTableModel(List<Problem> problems, List<Area> areas, List<Status>statuses) {
 		this.problems = problems;
 	}
+	
 	 @Override
 	    public String getColumnName(int columnIndex){
 	         return columns[columnIndex];
@@ -48,8 +49,7 @@ public class ProblemTableModel extends AbstractTableModel {
                 case 1:
                     return problem.getDescription();
                 case 2:
-                	int area = problem.getArea_id();
-                    return dbConnection.getAreaById(area).getDescription();
+                	return problem.getArea_id();
                 case 3:
                 	int status = problem.getStatus_id();
                     return dbConnection.getStatusById(status).getDescription();

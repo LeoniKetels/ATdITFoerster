@@ -1,5 +1,7 @@
 package main;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -34,6 +36,22 @@ public class TaskPage extends Container{
 			table.setModel(tableModel);
 			table.setSize(200,200);
 			
+			table.addMouseListener(new MouseAdapter() {
+				  public void mouseClicked(MouseEvent e) {
+				    if (e.getClickCount() == 2) {
+				      JTable target = (JTable)e.getSource();
+				      int row = target.getSelectedRow();
+				      ProblemTableModel tableModel = (ProblemTableModel) table.getModel();
+				      Problem selectedProblem = tableModel.getProblem(row);
+				      
+				      ChangeStatusForm fenster = new ChangeStatusForm(selectedProblem);
+				        fenster.setTitle(selectedProblem.getDescription());
+				        fenster.setSize(500, 300);
+				        fenster.setVisible(true);
+				    }
+				  }
+				});
+			
 			scrollpane = new JScrollPane(table);
 			panelMiddle = new JPanel();
 			panelMiddle.add(scrollpane);
@@ -48,7 +66,7 @@ public class TaskPage extends Container{
 		this.parentFrame = parentFrame;
 		setLayout(new BorderLayout());
 		
-        menuBar = new MenuBar(parentFrame);
+        menuBar = new MenuBar(this.parentFrame);
         
         add(menuBar, BorderLayout.NORTH);
         add(panelMiddle, BorderLayout.CENTER);
@@ -63,6 +81,7 @@ public class TaskPage extends Container{
 			statuses = dbConnection.getAllStatuses();
 			
 			}catch(Exception e) {
+				e.printStackTrace();
 				new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
 				  }
 	 }

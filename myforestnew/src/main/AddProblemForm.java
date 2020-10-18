@@ -16,20 +16,21 @@ import javax.swing.JTextArea;
  * Form to add a new Problem to the database
  *
  */
-public class ProblemForm extends JFrame {
+public class AddProblemForm extends JFrame {
 	private JScrollPane sp, sp2, sp3;
-	private JComboBox<String> baummenu, gebietmenu;
+	private JComboBox<String> baummenu;
+	private JComboBox<Integer> gebietmenu;
 	private JTextArea standortTextArea, bildTextArea, problemTextArea;
 	private JLabel lblProblem, lblBaumart, lblStandort, lblBild, lblGebiet;
 	private JFrame frame = this;
 
-	public ProblemForm() {
+	public AddProblemForm() {
 		Container c = getContentPane();
         c.setLayout(new GridLayout(10, 1));
         String[] namen = new String []
                 {"Eiche", "Buche", "Tanne", "Ahorn", "Kastanie"};
-        String[] gebiet = new String []
-                {"A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"};
+        Integer[] gebiet = new Integer []
+                {1,2,3,4,5,6,7,8,9};
         lblProblem = new JLabel("Problembeschreibung:");
         lblBaumart = new JLabel("Baumart:");
         lblGebiet = new JLabel("Gebiet:");
@@ -39,7 +40,7 @@ public class ProblemForm extends JFrame {
         problemTextArea.setLineWrap(true);
         sp = new JScrollPane(problemTextArea);
         baummenu = new JComboBox<String>(namen);
-        gebietmenu = new JComboBox<String>(gebiet);
+        gebietmenu = new JComboBox<Integer>(gebiet);
         standortTextArea = new JTextArea();
         sp2 = new JScrollPane(standortTextArea);
         bildTextArea = new JTextArea();
@@ -68,8 +69,7 @@ public class ProblemForm extends JFrame {
 				String description = problemTextArea.getText();
 				String baum = (String) baummenu.getSelectedItem();
 				
-				//this only works because the index in the Combobox is the same as the DB id 
-				int area = gebietmenu.getSelectedIndex();
+				int area = (int) gebietmenu.getSelectedItem();
  
 				DBConnection dbConnection = new DBConnection();
 				dbConnection.insertProblem(new Problem(0, description, area, 2, baum));
@@ -83,7 +83,7 @@ public class ProblemForm extends JFrame {
 	}
 	
 	 public static void main(String[] args) {
-	        ProblemForm fenster = new ProblemForm();
+	        AddProblemForm fenster = new AddProblemForm();
 	        fenster.setTitle("Problem");
 	        fenster.setSize(500, 300);
 	        fenster.setVisible(true);

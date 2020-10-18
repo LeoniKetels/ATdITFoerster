@@ -50,7 +50,6 @@ public class DBConnection {
 			return list;
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
-			new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
 			return null;
 		}
 	}
@@ -92,8 +91,7 @@ public class DBConnection {
 			}
 			return list;
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(new JFrame(), "There was an Error with the database Connection. Please check if the database is set up correctly (README)", "Dialog",
-			        JOptionPane.ERROR_MESSAGE);
+			System.err.println(e.getMessage());
 			return null;
 		}
 	}
@@ -256,6 +254,14 @@ public class DBConnection {
 		}
 	}
 
+	public void changeStatus(int problemId, int statusId) {
+		String stmt = "UPDATE problem SET status_id = "+ statusId+ " WHERE id = "+ problemId ;
+		try (PreparedStatement pstmt = conn.prepareStatement(stmt)) {
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	/**
 	 * close the Database Connection 
@@ -273,10 +279,9 @@ public class DBConnection {
 //		DBConnection db;
 //		try {
 //			db = new DBConnection();
-//			db.insertProblem(new Problem(10,"Baum auf Gehweg", 5, 3, "Birke") );
-//			System.out.println(db.getProblemByID(10));
-////			System.out.println(db.getAllProblems());
-//			DBConnection.close();
+//			db.changeStatus(1, 3);
+//			System.out.println(db.getProblemByID(1));
+//			
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}

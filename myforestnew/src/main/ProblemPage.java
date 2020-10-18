@@ -2,6 +2,8 @@ package main;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,17 +44,40 @@ public class ProblemPage extends Container{
 		
 		refreshButton = new JButton("refresh");
 		refreshButton.addActionListener(new NavButtonListener(parentFrame, NavButtonListener.PROBLEM_PAGE));
-		
+		if (!problems.isEmpty()) {
 		table = new JTable();
 		ProblemTableModel tableModel = new ProblemTableModel(problems, areas, statuses);
 		table.setModel(tableModel);
 		table.setSize(200,200);
 		
+		table.addMouseListener(new MouseAdapter() {
+			  public void mouseClicked(MouseEvent e) {
+			    if (e.getClickCount() == 2) {
+			      JTable target = (JTable)e.getSource();
+			      int row = target.getSelectedRow();
+			      ProblemTableModel tableModel = (ProblemTableModel) table.getModel();
+			      Problem selectedProblem = tableModel.getProblem(row);
+			      
+			      ChangeStatusForm fenster = new ChangeStatusForm(selectedProblem);
+			        fenster.setTitle(selectedProblem.getDescription());
+			        fenster.setSize(500, 300);
+			        fenster.setVisible(true);
+			    }
+			  }
+			});
+		
 		scrollpane = new JScrollPane(table);
 		panelMiddle = new JPanel();
+		}else {
+	        panelMiddle = new JPanel();
+			JLabel warnung = new JLabel("Keine Probleme vorhanden");
+			panelMiddle.add(warnung);
+			}
 		panelMiddle.add(btnAdd);
 		panelMiddle.add(refreshButton);
 		panelMiddle.add(scrollpane);
+		
+		
 		setLayout(new BorderLayout());
 		
         menuBar = new MenuBar(parentFrame);
@@ -60,23 +85,24 @@ public class ProblemPage extends Container{
         add(menuBar, BorderLayout.NORTH);
         add(panelMiddle, BorderLayout.CENTER);
         setVisible(true);
+
 	}
 	private void getData(){
-			try {
+		try {
 			dbConnection = new DBConnection();
 			problems = dbConnection.getAllProblems();
 			areas = dbConnection.getAllAreas();
 			statuses = dbConnection.getAllStatuses();
-			
-			}catch(Exception e) {
-				new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
-				  }
+		}catch(Exception e) {
+			e.printStackTrace();
+			new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
+		}
 	 }
 	class ButtonListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ProblemForm fenster = new ProblemForm();
+			AddProblemForm fenster = new AddProblemForm();
 	        fenster.setTitle("Problem hinzufügen");
 	        fenster.setSize(500, 300);
 	        fenster.setVisible(true);
