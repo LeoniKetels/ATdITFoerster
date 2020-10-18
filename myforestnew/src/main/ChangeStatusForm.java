@@ -27,6 +27,7 @@ public class ChangeStatusForm extends JFrame{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
 		}
 		
 		labelCurrentStatus = new JLabel("jetziger Status: " + statusDescription);
@@ -45,7 +46,8 @@ public class ChangeStatusForm extends JFrame{
 						DBConnection dbConnection = new DBConnection();
 						dbConnection.changeStatus(problem.getId(),statusId );
 					} catch (Exception e2) {
-						e2.printStackTrace();			
+						e2.printStackTrace();
+						new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
 						}	
 				}
 				frame.dispose();

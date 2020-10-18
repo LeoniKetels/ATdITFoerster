@@ -3,10 +3,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
-
 /**
  * 
  * @author Gruppe 1
@@ -25,7 +21,7 @@ public class DBConnection {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(
 				"jdbc:mysql://localhost/myforestDB?"
-                        + "user=User&password=myforest");
+                        + "user=User&password=myfores");
 		}
 //		conn = DriverManager.getConnection(
 //				"jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7355900?user=sql7355900&password=kHaqmas865");

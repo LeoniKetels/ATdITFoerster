@@ -61,6 +61,7 @@ public class ProblemTableModel extends AbstractTableModel {
         }
 		catch( Exception e ) {
 			e.printStackTrace();
+			new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
         }
         return "";	
         
