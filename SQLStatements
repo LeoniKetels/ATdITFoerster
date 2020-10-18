@@ -44,10 +44,10 @@ CREATE TABLE `status` (
 
 
 INSERT INTO `status` (`id`, `description`) VALUES
-(1, 'in Bearbeitung'),
-(2, 'Offen'),
+(1, 'Offen'),
+(2, 'In Bearbeitung'),
 (3, 'Bearbeitet'),
-(4, 'in Warteschlange');
+(4, 'In Warteschlange');
 
 CREATE USER 'User' @'localhost' IDENTIFIED BY 'myforest';
 GRANT ALL PRIVILEGES ON myforestDB.* TO 'User'@'localhost';
