@@ -14,12 +14,6 @@ public class NavButtonListener implements ActionListener {
 	Pages destinationPage;
 	JFrame frame;
 	DBConnection dbConnection;
-//	public static final String MAIN_MENU = "main";
-//	public static final String CHAT_PAGE = "chat";
-//	public static final String SHOP_PAGE = "shop";
-//	public static final String TASK_PAGE  = "task";
-//	public static final String PROBLEM_PAGE  = "problem";
-	
 	
 	 public NavButtonListener(JFrame frame, Pages destinationPage) {
 		 this.destinationPage = destinationPage;
