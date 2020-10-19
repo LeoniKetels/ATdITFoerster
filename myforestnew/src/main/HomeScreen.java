@@ -44,7 +44,7 @@ public class HomeScreen extends Container {
 	ImageIcon bild = new ImageIcon(url);
 	lab = new JLabel (bild);
 	start = new JButton("Start");
-	start.addActionListener(new NavButtonListener(parentFrame, NavButtonListener.MAIN_MENU ));
+	start.addActionListener(new NavButtonListener(parentFrame, Pages.MAIN_MENU ));
 	panel1.add(lab);
 	panel2.add(start);
 	setBackground(Color.white);

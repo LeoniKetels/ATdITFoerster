@@ -43,7 +43,7 @@ public class ProblemPage extends Container{
 		btnAdd.addActionListener(new ButtonListener());
 		
 		refreshButton = new JButton("refresh");
-		refreshButton.addActionListener(new NavButtonListener(parentFrame, NavButtonListener.PROBLEM_PAGE));
+		refreshButton.addActionListener(new NavButtonListener(parentFrame, Pages.PROBLEM_PAGE));
 		if (!problems.isEmpty()) {
 		table = new JTable();
 		ProblemTableModel tableModel = new ProblemTableModel(problems, areas, statuses);

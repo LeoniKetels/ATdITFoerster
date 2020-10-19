@@ -28,11 +28,11 @@ public class MenuBar extends JPanel {
 		btnTasks	 	= new JButton("Aufgaben");
 		
 		
-	    btnMain.addActionListener(new NavButtonListener( parentFrame, NavButtonListener.MAIN_MENU));
-	    btnShop.addActionListener(new NavButtonListener( parentFrame, NavButtonListener.SHOP_PAGE));
-	    btnChat.addActionListener(new NavButtonListener( parentFrame, NavButtonListener.CHAT_PAGE));
-	    btnProblems.addActionListener(new NavButtonListener( parentFrame, NavButtonListener.PROBLEM_PAGE));
-	    btnTasks.addActionListener(new NavButtonListener( parentFrame, NavButtonListener.TASK_PAGE));
+	    btnMain.addActionListener(new NavButtonListener( parentFrame, Pages.MAIN_MENU));
+	    btnShop.addActionListener(new NavButtonListener( parentFrame, Pages.SHOP_PAGE));
+	    btnChat.addActionListener(new NavButtonListener( parentFrame, Pages.CHAT_PAGE));
+	    btnProblems.addActionListener(new NavButtonListener( parentFrame, Pages.PROBLEM_PAGE));
+	    btnTasks.addActionListener(new NavButtonListener( parentFrame, Pages.TASK_PAGE));
 	    
 	    btnTasks.setBackground(Color.WHITE);
 	    btnMain.setBackground(Color.WHITE);

@@ -11,7 +11,7 @@ import java.util.List;
  *
  */
 
-//will become a Singleton 
+// Singleton 
 public class DBConnection {
 	public static Connection conn;
 
@@ -21,7 +21,7 @@ public class DBConnection {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(
 				"jdbc:mysql://localhost/myforestDB?"
-                        + "user=User&password=myfores");
+                        + "user=User&password=myforest");
 		}
 //		conn = DriverManager.getConnection(
 //				"jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7355900?user=sql7355900&password=kHaqmas865");

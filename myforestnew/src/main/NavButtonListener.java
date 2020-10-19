@@ -11,38 +11,37 @@ import javax.swing.JFrame;
 
 public class NavButtonListener implements ActionListener {
 	
-	String destinationPage;
+	Pages destinationPage;
 	JFrame frame;
 	DBConnection dbConnection;
-	public static final String MAIN_MENU = "main";
-	public static final String CHAT_PAGE = "chat";
-	public static final String SHOP_PAGE = "shop";
-	public static final String TASK_PAGE  = "task";
-	public static final String PROBLEM_PAGE  = "problem";
+//	public static final String MAIN_MENU = "main";
+//	public static final String CHAT_PAGE = "chat";
+//	public static final String SHOP_PAGE = "shop";
+//	public static final String TASK_PAGE  = "task";
+//	public static final String PROBLEM_PAGE  = "problem";
 	
 	
-	 public NavButtonListener(JFrame frame, String destinationPage) {
+	 public NavButtonListener(JFrame frame, Pages destinationPage) {
 		 this.destinationPage = destinationPage;
 		 this.frame = frame;
-
 	 }
 	 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch(destinationPage) {
-		case(MAIN_MENU):
+		case MAIN_MENU:
 			frame.setContentPane(new MainMenu(frame));
 			break;
-		case(CHAT_PAGE):
+		case CHAT_PAGE:
 			frame.setContentPane(new ChatPage(frame));
 			break;
-		case(SHOP_PAGE):
+		case SHOP_PAGE:
 			frame.setContentPane(new ShopPage(frame));
 			break;
-		case(PROBLEM_PAGE):
+		case PROBLEM_PAGE:
 			frame.setContentPane(new ProblemPage(frame));
 			break;
-		case(TASK_PAGE):
+		case TASK_PAGE:
 			frame.setContentPane(new TaskPage(frame));
 			break;
 		}
