@@ -16,6 +16,7 @@ public class ChangeStatusForm extends JFrame{
 	JLabel labelCurrentStatus;
 	
 	public ChangeStatusForm(Problem problem) {
+		this.setTitle(problem.getDescription() + ": Status ändern");
 		String statusDescription = "";
 		Container c = getContentPane();
 		c.setLayout(new GridLayout(3,1));

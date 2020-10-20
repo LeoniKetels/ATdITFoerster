@@ -45,7 +45,6 @@ public class TaskPage extends Container{
 				      Problem selectedProblem = tableModel.getProblem(row);
 				      
 				      ChangeStatusForm fenster = new ChangeStatusForm(selectedProblem);
-				        fenster.setTitle(selectedProblem.getDescription());
 				        fenster.setSize(500, 300);
 				        fenster.setVisible(true);
 				    }
