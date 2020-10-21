@@ -26,12 +26,8 @@ public class TestDBConnection {
      *Testing get Problem by Id from Database
      * @throws Exception 
      */
-    @Test
-    public void testGetProblem() throws Exception {
-        DBConnection connection = new DBConnection();
-        Problem problemTest = new Problem(1, "Der Baum ist kaputt",1,1, "Buche");
-        Assert.assertEquals(problemTest.toString(),connection.getProblemByID(1).toString());
-    }
+	DBConnection connection;
+
     
     //insertProblem Methode testen mit contains Methode in der Liste funktioniert nicht
     /**
@@ -39,13 +35,26 @@ public class TestDBConnection {
      * @throws Exception 
      */
     @Test
-    public void testInsertProblem() throws Exception {
+    public void testInsertProblemAndGetProblem() throws Exception {
+    	connection = new DBConnection();
         Problem problemTest = new Problem(100, "Testproblem",1,1, "Eiche");
-        DBConnection connection = new DBConnection();
         connection.insertProblem(problemTest);
-        List<Problem> problemList = new ArrayList<Problem>();
-        problemList = connection.getAllProblems();
-        Assert.assertTrue((problemList.contains(problemTest)));
+        Problem problem = connection.getProblemByID(100);
+        Assert.assertEquals(problemTest.toString(), problem.toString());      
+    }
+    
+    @Test
+    public void testGetProblem() throws Exception {
+        connection = new DBConnection();
+        Problem problemTest = new Problem(1, "Der Baum ist kaputt",1,1, "Buche");
+        Assert.assertEquals(problemTest.toString(),connection.getProblemByID(1).toString());
+    }
+    
+    @Test
+    public void testDeleteProblem() throws Exception {
+    	connection = new DBConnection();
+    	connection.deleteProblem(100);
+    	Assert.assertNull(connection.getProblemByID(100));
     }
     
         /**
@@ -54,10 +63,10 @@ public class TestDBConnection {
          */
         @Test
         public void testGetAllAreas() throws Exception {
+        	connection = new DBConnection();
             Area testArea = new Area(1, "49.349187, 7.923600");
-            DBConnection connection = new DBConnection();
-            List<Area> areaList = connection.getAllAreas();
-            Assert.assertTrue((areaList.contains(testArea)));
+            Area area = connection.getAreaById(1);
+            Assert.assertEquals(testArea.toString(), area.toString());
         }
     
     
@@ -67,7 +76,7 @@ public class TestDBConnection {
      */
     @Test
     public void testGetArea() throws Exception {
-        DBConnection connection = new DBConnection();
+    	connection = new DBConnection();
         Area testArea = new Area(1, "49.349187, 7.923600");
         Assert.assertEquals(testArea.toString(),connection.getAreaById(1).toString());
     }
@@ -78,7 +87,7 @@ public class TestDBConnection {
      */
     @Test
     public void testGetStatus() throws Exception {
-        DBConnection connection = new DBConnection();
+    	connection = new DBConnection();
         Status testStatus = new Status(1, "Offen");
         Assert.assertEquals(testStatus.toString(),connection.getStatusById(1).toString());
     } 
@@ -89,9 +98,10 @@ public class TestDBConnection {
      */
     @Test
     public void testChangeStatus() throws Exception {
-        DBConnection connection = new DBConnection();
+    	connection = new DBConnection();
         connection.changeStatus(1, 2);
         Problem problemTest = new Problem(1, "Der Baum ist kaputt",1,2, "Buche");
         Assert.assertEquals(problemTest.toString(),connection.getProblemByID(1).toString());
+        connection.changeStatus(1, 1);
     }    
 }

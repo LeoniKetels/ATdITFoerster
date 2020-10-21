@@ -259,6 +259,15 @@ public class DBConnection {
 		}
 	}
 	
+	public void deleteProblem(int problemId) {
+		String stmt = "DELETE FROM problem WHERE id = "+ problemId;
+		try (PreparedStatement pstmt = conn.prepareStatement(stmt)) {
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	/**
 	 * close the Database Connection 
 	 */
