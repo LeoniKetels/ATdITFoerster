@@ -11,7 +11,6 @@ import javax.swing.*;
  * Container to display Tasks in a table
  */
 
-//will be extended so one can click a button to set the status to completed
 public class TaskPage extends Container{
 	
 	private JFrame parentFrame;
@@ -19,6 +18,7 @@ public class TaskPage extends Container{
 	private MenuBar menuBar;
 	private JTable table;
 	private JScrollPane scrollpane;
+	private JButton refreshButton;
 	private List<Problem> problemsInProgress;
 	List<Area> areas; 
 	List<Status> statuses; 
@@ -51,8 +51,12 @@ public class TaskPage extends Container{
 				  }
 				});
 			
+			refreshButton = new JButton("refresh");
+			refreshButton.addActionListener(new NavButtonListener(parentFrame, Pages.TASK_PAGE));
+			
 			scrollpane = new JScrollPane(table);
 			panelMiddle = new JPanel();
+			panelMiddle.add(refreshButton);
 			panelMiddle.add(scrollpane);
 			
 	        
