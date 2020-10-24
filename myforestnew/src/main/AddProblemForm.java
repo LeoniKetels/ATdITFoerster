@@ -81,13 +81,4 @@ public class AddProblemForm extends JFrame {
 			}
 		}
 	}
-	
-	 public static void main(String[] args) {
-	        AddProblemForm fenster = new AddProblemForm();
-	        fenster.setTitle("Problem");
-	        fenster.setSize(500, 300);
-	        fenster.setVisible(true);
-	        fenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    }
-
 }
