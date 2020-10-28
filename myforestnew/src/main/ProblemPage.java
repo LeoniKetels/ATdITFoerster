@@ -87,15 +87,10 @@ public class ProblemPage extends Container{
 
 	}
 	private void getData(){
-		try {
 			dbConnection = new DBConnection();
 			problems = dbConnection.getAllProblems();
 			areas = dbConnection.getAllAreas();
 			statuses = dbConnection.getAllStatuses();
-		}catch(Exception e) {
-			e.printStackTrace();
-			new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
-		}
 	 }
 	class ButtonListener implements ActionListener{
 

@@ -39,7 +39,6 @@ public class ProblemTableModel extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		try {
 		Problem problem = getProblem(rowIndex);
 		DBConnection dbConnection = new DBConnection();
         if(!(problem == null)) {
@@ -54,17 +53,11 @@ public class ProblemTableModel extends AbstractTableModel {
                 	int status = problem.getStatus_id();
                     return dbConnection.getStatusById(status).getDescription();
                 case 4: 
-                	return problem.getTree();
+                	return problem.getTree(); 
             }
 
             }
-        }
-		catch( Exception e ) {
-			e.printStackTrace();
-			new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
-        }
-        return "";	
-        
+        return null;        
 	}
 	
 	 public Problem getProblem(int rowIndex) {

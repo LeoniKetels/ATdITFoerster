@@ -21,20 +21,15 @@ public class ChangeStatusForm extends JFrame{
 		Container c = getContentPane();
 		c.setLayout(new GridLayout(3,1));
 		DBConnection dbConnection;
-		try {
 			dbConnection = new DBConnection();
 			int status = problem.getStatus_id();
 	        statusDescription = dbConnection.getStatusById(status).getDescription();
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-			new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
-		}
+
+	    labelCurrentStatus = new JLabel("jetziger Status: " + statusDescription);
 		
-		labelCurrentStatus = new JLabel("jetziger Status: " + statusDescription);
-		
-		String[] status = {"Offen", "in Bearbeitung","Bearbeitet", "in Warteschlange"};
-		JComboBox<String> statusMenu = new JComboBox<String>(status);
+		String[] statuses = {"Offen", "in Bearbeitung","Bearbeitet", "in Warteschlange"};
+		JComboBox<String> statusMenu = new JComboBox<String>(statuses);
 		
 		JButton save = new JButton("Änderungen speichern");
 		save.addActionListener(new ActionListener(){
@@ -43,13 +38,8 @@ public class ChangeStatusForm extends JFrame{
 				if((statusMenu.getSelectedIndex() +1) != problem.getStatus_id()) {
 					int index = statusMenu.getSelectedIndex();
 					int statusId = index +1; 
-					try {
 						DBConnection dbConnection = new DBConnection();
 						dbConnection.changeStatus(problem.getId(),statusId );
-					} catch (Exception e2) {
-						e2.printStackTrace();
-						new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.","Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.");
-						}	
 				}
 				frame.dispose();
 			}

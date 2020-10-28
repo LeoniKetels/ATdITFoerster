@@ -15,13 +15,23 @@ import java.util.List;
 public class DBConnection {
 	public static Connection conn;
 
-	public DBConnection() throws Exception {
-		
+	public DBConnection()  {
+		try {
 		if(DBConnection.conn == null) {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(
 				"jdbc:mysql://localhost/myforestDB?"
                         + "user=User&password=myforest");
+		}
+		}catch(SQLException se) {	
+			se.printStackTrace();
+			new ErrorFrame("Es gab einen Fehler bei der Datenbankverbindung.",
+					"Prüfen Sie, ob Sie alle Schritte zur erfolgreichen Datenbankverbindung durchgeführt haben.",
+					se.getMessage());
+		}
+		catch (ClassNotFoundException cnfe) {
+			cnfe.printStackTrace();
+			new ErrorFrame("Es gab einen Fehler im Code", "Bitte verständen Sie Ihre IT-Abteilung", cnfe.getMessage());
 		}
 //		conn = DriverManager.getConnection(
 //				"jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7355900?user=sql7355900&password=kHaqmas865");
@@ -46,6 +56,7 @@ public class DBConnection {
 			return list;
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
 			return null;
 		}
 	}
@@ -88,6 +99,7 @@ public class DBConnection {
 			return list;
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
 			return null;
 		}
 	}
@@ -106,8 +118,9 @@ public class DBConnection {
 				area = convertAreaRow(rs);
 			}
 			return area;
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			System.err.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
 			return null;
 		}
 	}
@@ -130,6 +143,7 @@ public class DBConnection {
 			return list;
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
 			return null;
 		}
 	}
@@ -152,6 +166,7 @@ public class DBConnection {
 			return list;
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
 			return null;
 		}
 	}
@@ -171,6 +186,8 @@ public class DBConnection {
 			return status;
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
+
 			return null;
 		}
 	}
@@ -190,7 +207,6 @@ public class DBConnection {
 
 		int id = rs.getInt("id");
 		String description = rs.getString("description");
-
 		return new Area(id, description);
 	}
 
@@ -217,6 +233,7 @@ public class DBConnection {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
 		}
 	}
 	
@@ -232,6 +249,7 @@ public class DBConnection {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
 		}
 	}
 	
@@ -247,6 +265,8 @@ public class DBConnection {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
+
 		}
 	}
 
@@ -256,6 +276,7 @@ public class DBConnection {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
 		}
 	}
 	
@@ -265,6 +286,7 @@ public class DBConnection {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+			getSQLStatementError(e.getMessage());
 		}
 	}
 	
@@ -278,6 +300,10 @@ public class DBConnection {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private ErrorFrame getSQLStatementError(String message) {
+		return new ErrorFrame("Es gab einen Fehler bei der SQL-Abfrage.","Prüfen Sie, ob Ihre Datenbank läuft, sonst verständigen Sie bitte Ihre IT-Abteilung", message);
 	}
 	
 //	public static void main(String[] args) {
