@@ -26,11 +26,12 @@ public class ShopPage extends Container{
     setLayout(new BorderLayout());
     panel1 = new JPanel();
     menuBar = new MenuBar(parentFrame);
-    //URL url = Shop.class.getResource("Shop.png");           
-    //ImageIcon bild = new ImageIcon(url);
-    //lab = new JLabel (bild);
-    //panel1.add(lab);
+    URL url = ChatPage.class.getResource("../resources/ShopImage.png");           
+    ImageIcon bild = new ImageIcon(url);
+    lab = new JLabel (bild);
+    panel1.add(lab);
     add(menuBar, BorderLayout.NORTH);
-    setBackground(Color.white);
+    add(panel1, BorderLayout.CENTER);
+
     }
 }

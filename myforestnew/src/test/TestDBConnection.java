@@ -1,21 +1,14 @@
 package test;
+
 import org.junit.Assert;
 import org.junit.Test;
 
- 
-
-
-import java.util.ArrayList;
-import java.util.List;
-
- 
-
-import main.Area;
-import main.Status;
 import main.DBConnection;
 import main.Problem;
-
+import main.Status;
+import main.Area;
  
+
 
 /**
  * @author Gruppe 1
