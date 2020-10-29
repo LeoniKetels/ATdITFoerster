@@ -14,22 +14,20 @@ import javax.swing.*;
 //but we decided not to implement an actual Chat-Function
 
 public class ChatPage extends Container{
-    JPanel panel1, panelNavigation;
-    JLabel label;
-    JFrame parentFrame;
-    JButton btnBack;
+    private JPanel panel;
+    private MenuBar menuBar;
+    private JLabel label;
     
     public ChatPage (JFrame parentFrame) {
-    this.parentFrame = parentFrame;
     setLayout(new BorderLayout());
-    panel1 = new JPanel();
-    panelNavigation = new MenuBar(parentFrame);
+    panel = new JPanel();
+    menuBar = new MenuBar(parentFrame);
     URL url = ChatPage.class.getResource("../resources/Chat.png");           
     ImageIcon bild = new ImageIcon(url);
     label = new JLabel (bild);
-    panel1.add(label);
-    add(panelNavigation, BorderLayout.NORTH);
-    add(panel1, BorderLayout.CENTER);
+    panel.add(label);
+    add(menuBar, BorderLayout.NORTH);
+    add(panel, BorderLayout.CENTER);
     
    
     }

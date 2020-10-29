@@ -16,22 +16,20 @@ import javax.swing.*;
 
 
 public class ShopPage extends Container{
-    private JPanel panel1;
+    private JPanel panel;
     private MenuBar menuBar;
-    private JLabel lab;
-    private JFrame parentFrame;
+    private JLabel label;
     
     public ShopPage (JFrame parentFrame) {
-    this.parentFrame = parentFrame;
     setLayout(new BorderLayout());
-    panel1 = new JPanel();
+    panel = new JPanel();
     menuBar = new MenuBar(parentFrame);
     URL url = ChatPage.class.getResource("../resources/ShopImage.png");           
     ImageIcon bild = new ImageIcon(url);
-    lab = new JLabel (bild);
-    panel1.add(lab);
+    label = new JLabel (bild);
+    panel.add(label);
     add(menuBar, BorderLayout.NORTH);
-    add(panel1, BorderLayout.CENTER);
+    add(panel, BorderLayout.CENTER);
 
     }
 }

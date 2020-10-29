@@ -31,21 +31,19 @@ import javax.swing.JPanel;
  */
 public class HomeScreen extends Container {
 	private JButton start;
-	private JLabel lab;
+	private JLabel label;
 	private JPanel panel1, panel2;
-	private JFrame parentFrame;
 	
 	public HomeScreen (JFrame parentFrame) {
-	this.parentFrame = parentFrame;
 	setLayout(new BorderLayout());
 	panel1 = new JPanel();
 	panel2 = new JPanel();
 	URL url = HomeScreen.class.getResource("../resources/HomeImage.png");           
 	ImageIcon bild = new ImageIcon(url);
-	lab = new JLabel (bild);
+	label = new JLabel (bild);
 	start = new JButton("Start");
 	start.addActionListener(new NavButtonListener(parentFrame, Pages.MAIN_MENU ));
-	panel1.add(lab);
+	panel1.add(label);
 	panel2.add(start);
 	setBackground(Color.white);
 	add(panel1, BorderLayout.NORTH);

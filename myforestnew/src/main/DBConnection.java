@@ -192,7 +192,7 @@ public class DBConnection {
 		}
 	}
 
-	public Problem convertProblemRow(ResultSet rs) throws SQLException {
+	private Problem convertProblemRow(ResultSet rs) throws SQLException {
 		//bug: id is always 0 although the id in the database is set correctly
 		int id = rs.getInt("id");
 		String description = rs.getString("description");
@@ -203,14 +203,14 @@ public class DBConnection {
 		return new Problem(id, description, area_id, status_id, tree);
 	}
 
-	public Area convertAreaRow(ResultSet rs) throws SQLException {
+	private Area convertAreaRow(ResultSet rs) throws SQLException {
 
 		int id = rs.getInt("id");
 		String description = rs.getString("description");
 		return new Area(id, description);
 	}
 
-	public Status convertStatusRow(ResultSet rs) throws SQLException {
+	private Status convertStatusRow(ResultSet rs) throws SQLException {
 		int id = rs.getInt("id");
 		String description = rs.getString("description");
 		return new Status(id, description);

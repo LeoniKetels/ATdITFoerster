@@ -13,7 +13,7 @@ import javax.swing.JFrame;
  *
  */
 public class StartClass extends JFrame {
-	private Container c, content;
+	private Container c;
 	
 	public StartClass() {
 		c = this.getContentPane();
@@ -31,18 +31,12 @@ public class StartClass extends JFrame {
 		start.setSize(1500, 1000);
 		start.setVisible(true);
 		start.setBackground(Color.white);
-		start.addWindowListener(new WindowAdapter() {
-			 
+		start.addWindowListener(new WindowAdapter() { 
 			@Override
 			public void windowClosing(WindowEvent e) {
 				DBConnection.close();
 			    System.exit(0);
 			}
 		});
-	}
-	
-	private void setContent(Container content) {
-		this.content = content; 
-		c.add(content, BorderLayout.CENTER);
 	}
 }

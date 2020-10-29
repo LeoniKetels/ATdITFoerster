@@ -11,9 +11,9 @@ import javax.swing.JFrame;
 
 public class NavButtonListener implements ActionListener {
 	
-	Pages destinationPage;
-	JFrame frame;
-	DBConnection dbConnection;
+	public Pages destinationPage;
+	public JFrame frame;
+	public DBConnection dbConnection;
 	
 	 public NavButtonListener(JFrame frame, Pages destinationPage) {
 		 this.destinationPage = destinationPage;

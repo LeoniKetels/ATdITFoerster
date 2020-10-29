@@ -20,7 +20,6 @@ import javax.swing.*;
 
 public class ProblemPage extends Container{
 	
-	private JFrame parentFrame;
 	private JPanel panelMiddle;
 	private MenuBar menuBar;
 	private JTable table;
@@ -33,7 +32,6 @@ public class ProblemPage extends Container{
 	
 	
 	public ProblemPage(JFrame parentFrame) {
-		this.parentFrame = parentFrame;
 		
 		if(problems == null) {
 			getData();
